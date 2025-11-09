@@ -1,0 +1,139 @@
+/* --- Style général --- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1a4b7c;
+    color: #ffffff;
+    display: flex;
+}
+
+
+
+/* --- Contenu principal --- */
+.content {
+    margin-left: 60px;
+    padding: 20px;
+    flex-grow: 1;
+    transition: margin-left 0.3s;
+}
+
+.sidebar:hover ~ .content {
+    margin-left: 180px;
+}
+
+div {
+    background-color: rgba(0, 0, 0, 0.288);
+    border: 3px solid rgba(0, 0, 0, 0.288);
+    padding: 10px;
+    border-radius: 1em;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.452);
+}
+
+
+
+/* --- Titres --- */
+.banner {
+    padding: 20px;
+    background-image:url(../styles/images/code-header.png);  
+    background-size: cover;
+    border-radius: 0.5em;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.452);;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.8em;
+    color: #ffffff;
+}
+
+header p {
+    margin: 0.5em;
+    font-size: 2em;
+    color: #2affd4;
+}
+
+section h2 {
+    color: #2affd4;
+    margin-top: 25px;
+    font-size: 2em;
+}
+
+.center {
+    text-align: center;
+}
+
+
+
+/* --- Barre latérale --- */
+.sidebar {
+    width: 60px;
+    background-color: #0c3153;
+    height: 100vh;
+    position: fixed;
+    transition: width 0.3s;
+    overflow: hidden;
+}
+
+.sidebar .invisible {
+    opacity: 0;
+}
+
+.sidebar:hover {
+    width: 180px;
+}
+
+.sidebar:hover .invisible {
+    opacity: 1;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    border-bottom: 1px solid #ffffff;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    transition: background-color 0.2s;
+}
+
+.sidebar a:hover {
+    background-color: #000000;
+}
+
+div a {
+    color: red;
+}
+
+/* --- Boîte de code --- */
+.code {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px; 
+    background-color: #123b61; 
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.code-box {
+    background-color: #2e2e2e;
+    color: #00ffcc;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.788);
+    width: max-content; 
+    max-width: 70%; 
+    overflow-x: auto; 
+    margin: 0;
+    font-family: monospace;
+    font-size: 0.95em;
+    flex-shrink: 0;
+}
+

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portefeuille de Compétences Professionnelles</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+
+    <nav class="sidebar">
+        <ul class="invisible" >
+            <li><a class="invisible" href="./index.html">Présentation</a></li>
+            <li><a class="invisible" href="./realisations.html">Réalisations</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <header class="banner">
+            <h1 class="center">Réalisation d'un jeu en PHP</h1>
+            <p class="center"><strong>Pierre / Feuille / Ciseaux</strong></p>
+        </header>
+        <section>
+            <h2>Présentation</h2>
+            <div><p>L'objectif de ce projet était de <strong>refaire</strong> le célèbre jeu "Pierre / Feuille / Ciseaux" en utilisant le <strong>language PHP</strong>. Le joueur doit pouvoir choisir une des trois options et l'ordinateur en choisira une aléatoirement.</p></div>
+            
+            <h2>Fonctions</h2>
+            <div><p>Pour réaliser ce jeu, nous devons réaliser <strong>différentes étapes :</strong> une fonction qui permettra au <strong>joueur de choisir son coup</strong>, une fonctions qui permettra à <strong>l'ordinateur de jouer</strong> et une fonction qui <strong>comparera les coups</strong> de chaucun et <strong>déclarera le vainqueur.</strong></p></div>
+            
+            <h2>Les bases</h2>
+            <div class="code">
+                <pre class="code-box">
+                    <code>
+&lt;?php
+include('vues/header.php');
+include('vues/form.php');
+include('vues/footer.php');
+                    </code>
+                </pre>
+                <section>
+                    <p>Commençons déjà par créer la base du projet : <strong>"index.php".</strong></p>
+                    <p>On utilise <strong>"include()"</strong> pour y <strong>intégrer</strong> d'autres pages. La page <strong>"vues/header.php"</strong> s'occupera d'afficher un titre tandis que la page <strong>"vues/footer.php"</strong> s'occupera de fermer le html de la page. La page <strong>"vues/form.php"</strong> sera créer plus tard.</p>
+                </section>
+            </div>
+
+            <h2>Permettre au joueur de jouer</h2>
+            <div class="code">
+                <pre class="code-box">
+                    <code>
+&lt;h2&gt;Jouer&lt;/h2&gt;
+&lt;form action="jouer.php"&gt;
+&lt;fieldset&gt;
+    &lt;legend&gt;Faites votre choix&lt;/legend&gt;
+    &lt;input type="radio"  name="choix" value="0"&gt;
+    &lt;label for="0"&gt;
+        Pierre
+    &lt;/label&gt;
+    &lt;input type="radio"  name="choix" value="1"&gt;
+    &lt;label for="1"&gt;
+        Feuille
+    &lt;/label&gt;
+    &lt;input type="radio" name="choix" value="2"&gt;
+    &lt;label for="2"&gt;
+        Ciseaux
+    &lt;/label&gt;
+&lt;/fieldset&gt;
+
+&lt;button type="submit"&gt;Envoyer&lt;/button&gt;
+&lt;/form&gt;
+                    </code>
+                </pre>
+                <section>
+                <p>Voici la page <strong>"vues/from.php".</strong> Ici, on génère un formulaire en HTML qui agira sur la page <strong>"jouer.php".</strong></p>
+                <p>Le joueur a le choix entre 3 cercles, il ne peut en cocher qu'un : "Pierre", "Feuille" ou "Ciseaux". Le choix du joueur renverra une valeur qui sera comparée à celle choisit par la machine. 0 correspond à "Pierre", 1 à "Feuille" et 2 à "Ciseaux".</p>
+                <p>La réponse sera envoyé en utilisant la méthode <strong>GET</strong>, visible dans l'<strong>URL</strong>, car <strong>aucune donnée sensible</strong> ne va être envoyé. La clé "choix" lui sera attribuée.</p>
+                </section>
+            </div>
+
+            <h2>Générer la réponse de l'ordinateur</h2>
+            <div class="code">
+                <pre class="code-box">
+                    <code>
+/**
+ * Retourne le choix de l'ordinateur
+ * 
+ * 0 Pierre
+ * 1 Ciseau
+ * 2 Feuille
+ *
+ * 
+ * @return int choix de l'ordinateur
+ */
+function ordi_choix(): int {
+    return random_int(0, 2);
+} 
+                    </code>
+                </pre>
+                <p>Dans ce code, on créer une fonction appelée <strong>"ordi_choix"</strong> qui va générer un <strong>chiffre aléatoire</strong> entre 0 et 2, qui sera comparé avec le choix du joueur pour désigner le gagnant.</p>
+            </div>
+
+            <h2>Comparer les réponses</h2>
+            <div class="code">
+                <pre class="code-box">
+                    <code>
+/**
+* Fonction retournant le gagnant d'une manche.
+* Le gagnant est codé comme suit:
+* 0: égalité
+* 1: Joueur_1 a gagné
+* 2: Joueur_2 a gagné
+*
+* @param int $joueur_1 Choix du joueur 1
+* @param int $joueur_2 Choix du joueur 2
+* @return int Gagnant (voir ci-dessus)
+*/
+function gagnant (int $joueur_1, int $joueur_2): int
+{
+    if ($joueur_1 == 0){
+        // Joueur 1 a joué Pierre
+        switch($joueur_2){
+            case 0: return 0; // Pierre - Pierre
+            case 1: return 2; // Pierre - Feuille
+            case 2: return 1; // Pierre - Ciseaux
+        }
+    }
+    if ($joueur_1 == 1){
+        // Joueur 1 a joué Feuille
+        switch($joueur_2){
+            case 0: return 1; // Feuille - Pierre
+            case 1: return 0; // Feuille - Feuille
+            case 2: return 2; // Feuille - Ciseaux
+        }
+    }
+    if ($joueur_1 == 2){
+        // Joueur 1 a joué Ciseaux
+        switch($joueur_2){
+            case 0: return 2; // Ciseaux - Pierre
+            case 1: return 1; // Ciseaux - Feuille
+            case 2: return 0; // Ciseaux - Ciseaux
+        }
+    }
+}
+                    </code>
+                </pre>
+                <section>
+                <p>Dans ce code, on créer un fonction appelée <strong>"gagnant"</strong> qui va comparer le choix de chaque joueur pour désigner le gagnant.</p>
+                <p>On remarque que, contrairement à la fonction précédante, les <strong>parenthèses</strong> derrière le nom sont remplis. Ce sont des <strong>paramètres</strong>. Les valeurs qui seront rentrées dans les paranthèses lorsque la <strong>fonction sera appelée</strong> seront placé dans les variables ci-contre <strong>($joueur_1 et $joueur_2)</strong>, ce qui permet d'<strong>utiliser ces valeurs dans la fonction.</strong></p>
+                </section>
+            </div>
+
+            <h2>Commencons la construction</h2>
+            <div class="code">
+                <pre class="code-box">
+                    <code>
+/**
+* Pierre - Feuille - Ciseaux
+* Dans tout le script, on va coder les choix des joueurs:
+* 0: Pierre
+* 1: Feuille
+* 2: Ciseaux
+*/
+
+// Les inclusions de bibliothèques de fonctions sont placées en début de fichier
+include('fonctions.php');
+
+// On récupère le choix de l'utilisateur
+$choix_utilisateur = $_GET['choix'];
+// La machine joue au hasard
+$choix_machine = ordi_choix();
+// On détermine le gagnant
+$gagnant = gagnant($choix_utilisateur, $choix_machine);
+
+// On génère le HTML
+include('vues/reponse.php')
+                    </code>
+                </pre>
+                <section>
+                <p>Voici le contenu de la page <strong>"jouer.php".</strong> C'est celle avec laquelle le formulaire créé précédemment intéragit. On utilise <strong>"include()"</strong> pour intégrer la page <strong>"fonctions.php"</strong> définis précédemment et nécessaire si on veut les utiliser, ou la page de <strong>"reponse.php"</strong> que l'on verra plus tard.</p>
+                <p>Comme préciser dans le programme, on <strong>récupère la réponse</strong> du joueur grâce à la <strong>variable superglobale</strong> $_GET. Une variable superglobale est une variable <strong>prédéfinie par PHP</strong> qui a une <strong>portée globale</strong> sur le projet. Ce qui signifie qu'elle peut être utilisé <strong>partout quand cela est nécéssaire</strong>. Elle se comporte comme un <strong>tableau</strong>, on précise donc qu'on recherche la valeur avec la <strong>clé "choix"</strong>. La réponse du joueur est placée dans la variable <strong>"$choix_utilisateur".</strong></p>
+                <p>Ensuite, on appelle la fonction <strong> "ordi_choix()"</strong> pour générer la réponse de l'ordinateur et on place cette dernière dans la variable <strong> "$choix_machine".</strong> </p>
+                <p>Enfin, on appelle la fonction <strong>"gagnant()"</strong> en lui donnant le score de chacun. Elle va <strong>comparer les résultats</strong> puis le verdict sera placé dans la variable <strong>"$gagnant"</strong>.</p>
+            </section>
+            </div>
+    </main>
+
+</body>
+</html>
