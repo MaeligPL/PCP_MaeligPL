@@ -4,30 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portefeuille de Compétences Professionnelles</title>
-    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
 </head>
-<body>
+<body class="has-background-grey-darker is-flex is-flex-direction-column" style="min-height: 100vh;">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        </a>
+    </div>
 
-    <nav class="sidebar">
-        <ul class="invisible" >
-            <li><a class="invisible" href="./index.html">Présentation</a></li>
-            <li><a class="invisible" href="./realisations.html">Réalisations</a></li>
-        </ul>
-    </nav>
+    <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="./index.html">
+        Présentation
+      </a>
 
-    <main class="content">
-        <header class="banner">
-            <h1 class="center">PCP - Maëlig Poupot Labanvoie</h1>
-            <p class="center"><strong>Qui suis-je ?</strong></p>
-        </header>
-        <section>
-            <h2>Présentation</h2>
-            <div><p>Je m'appelle <strong>Maëlig Poupot Labanvoie</strong> et je suis actuellement en <strong>BTS <abbr title="Service Infromatique aux Organisations">SIO</abbr></strong> au lycée Victor et Hélènne Basch à Rennes.</p></div>
-            <h2>Description du BTS</h2>
-            <div><p>Le <strong>BTS <abbr title="Service Infromatique aux Organisations">SIO</abbr></strong> a pour ambition de former des techniciens capables de <strong>concevoir, développer, maintenir ou sécuriser</strong> des solutions informatiques adaptées aux besoins des entreprises.</p></div>
-            <h2>...</h2>
-            <div><p>...</p></div>
+      <a class="navbar-item" href="./bts.html">
+        BTS SIO
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <p class="navbar-link">
+          Réalisations BTS
+        </p>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="./jeu_php.html">
+            Pierre Feuille Ciseaux - PHP
+          </a>
+          <a class="navbar-item" href="./generateur_donnees.html">
+            Générateur de données - Python DOO
+          </a>
+          <a class="navbar-item" href="./serveur_web.html">
+            Etude Faisabilité serveur Web - PHP / MySQL, SQLite
+          </a>
+          <a class="navbar-item" href="./developpement_infra_web.html">
+            Développement d'infrastructure Web - HTML, CSS, PHP, MySQL
+          </a>
+        </div>
+      </div>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <p class="navbar-link">
+          Réalisations Perso
+        </p>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="">
+            [...]
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-danger">
+            <strong>Télécharger mon CV</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+    <main class="content is-flex-grow-1">
+      <div class="has-text-centered mt-6 pb-5">
+        <h1>Maëlig Poupot Labanvoie</abbr></h1>
+        <p><strong>Élève en première année de BTS SIO - Option SLAM</strong></p>
+      </div>
+        <div class="is-flex is-flex is-justify-content-center pl-5 pr-5 is-gap-2">
+            <div class="box mb-1">
+                <h2>Présentation</h2>
+                <p>Je m'appelle <strong>Maëlig Poupot Labanvoie</strong> et je suis actuellement étudiant en première année de 
+                    <strong>BTS <abbr title="Service Infromatique aux Organisations">SIO</abbr></strong> 
+                    au lycée <a href="https://lycee-basch.fr" target="_blank">Victor et Hélènne Basch à Rennes</a>, option SLAM.
+                </p>
+            </div>
+            <div class="box mb-1">
+                <h2>Description du BTS</h2>
+                <p>Le <strong>BTS <abbr title="Service Infromatique aux Organisations">SIO</abbr></strong> 
+                    a pour ambition de former des techniciens capables de <strong>concevoir, développer, maintenir 
+                    ou sécuriser</strong> des solutions informatiques adaptées aux besoins des entreprises.
+                </p>
+            </div>
+        </div>
     </main>
 
 </body>
+<footer class="footer py-5">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Maëlig POUPOT LABANVOIE - 2025/2026</strong>
+    </p>
+  </div>
+</footer>
 </html>
