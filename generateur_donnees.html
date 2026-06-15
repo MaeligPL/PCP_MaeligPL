@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portefeuille de Compétences Professionnelles</title>
+    <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
 </head>
 <body class="has-background-grey-darker is-flex is-flex-direction-column" style="min-height: 100vh;">
@@ -37,7 +38,7 @@
             Pierre Feuille Ciseaux - PHP
           </a>
           <a class="navbar-item" href="./generateur_donnees.html">
-            Générateur de données - Python DOO
+            Générateur de données - Python POO
           </a>
           <a class="navbar-item" href="./serveur_web.html">
             Etude Faisabilité serveur Web - PHP / MySQL, SQLite
@@ -59,6 +60,10 @@
           </a>
         </div>
       </div>
+
+      <a class="navbar-item" href="./stage.html">
+        Stage
+        </a>
     </div>
 
     <div class="navbar-end">
@@ -74,21 +79,205 @@
 </nav>
 
 
-<main class="content is-flex-grow-1">
-    <div class="is-flex is-justify-content-center is-align-items-center" style="min-height: 60vh;">
+<div class="is-flex is-justify-content-center is-align-items-center" style="min-height: 60vh;">
   <div class="box has-text-centered" style="max-width: 360px; width: 100%; padding: 2.5rem 2rem;">
 
     <div class="mb-4" style="font-size: 3rem; line-height: 1;">
       🚧
     </div>
 
-    <p class="title is-5 mb-2">Page en construction</p>
+    <p class="title is-5 mb-2">Page non finalisée</p>
     <p class="has-text-grey is-size-7">
-      Cette section n'est pas encore disponible. Revenez un peu plus tard !
+      Cette section n'est pas finalisée. À finir au plus vite !
     </p>
 
   </div>
 </div>
+
+
+
+<main class="content is-flex-grow-1">
+  <div class="has-text-centered mt-6 pb-5">
+        <h1>Générateur de données - Odoo</abbr></h1>
+        <p><strong>Python POO</strong></p>
+      </div>
+        <div class="is-flex is-flex is-justify-content-center pl-5 pr-5 is-gap-2">
+            <div class="box mb-1" style="flex: 1 1 0;">
+                <h2>Context</h2>
+                <p>
+                  Cette AP se faisait par groupe de 2, un étudiant <abbr title="Solutions Logicielles et Applications Métier"><strong>SLAM</strong></abbr> 
+                  et un étudiant <abbr title="Solutions d'Infrastructure, Systèmes et Réseaux"><strong>SISR.</strong></abbr>
+                </p>
+                <p>
+                   L'objectif pour les étudiants SLAM était de développer
+                  un script en Python Orienté Object pour permettre aux étudiants SISR de générer des profils aléatoires de particuliers ou d'organisations.
+                </p>
+            </div>
+            <div class="box mb-1" style="flex: 2 1 0;">
+                <h2>Fichiers fournis</h2>
+                <p>
+                  Il nous était founis plusieurs fichiers :
+                  <ul>
+                    <li>Un fichier <strong>"GenerateurDonneesPerso.py"</strong> contenant la classe <i>'GenerateurDonneesPerso'</i> 
+                      avec des méthodes permettant de récupérer des données depuis des dictionnaires.
+                    </li>
+                    <li>
+                      Un fichier <strong>"Test_csv_odoo.py"</strong> contenant la classe <i>'Test_csv_odoo'</i> avec des méthodes permettant de tester des fichiers CSV.
+                    </li>
+                    <li>
+                      Différents dictionnaires en <strong>.txt</strong> contenant des <i>noms</i>, des <i>prénoms</i>, des <i>adresses</i>, etc...
+                    </li>
+                  </ul>
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="box ml-5 mr-5 has-background-grey-dark mt-5">
+            <div class="is-flex is-flex-direction-row is-gap-2">
+                <div class="is-flex-direction-column">
+                    <div class="box">
+                        <h2>Générateur de clients -- particuliers</h2>
+                        <pre><code class="language-python">
+from GenerateurDonneesPerso import GenerateurDonneesPerso
+from random import randint
+
+def clients_particuliers(chemin):
+    with open(chemin, "w") as reset:
+        reset.write('')
+
+    with open(chemin, "a") as fichier:
+        fichier.write("Titre;Nom;Prénom;Email;Téléphone;Mobile;Code postal;Ville;Rue;Est une société \n")
+
+        generateur = GenerateurDonneesPerso()
+
+        nb_utilisateurs = int(input('Combien voulez-vous de clients particulier ? Nb = '))
+
+
+        for i in range(0, nb_utilisateurs):
+            x = randint(1,2)
+            if x == 1:
+                titre = "Madame"
+                estFeminin = True
+            else:
+                titre = "Monsieur"
+                estFeminin = False
+            nom = generateur.gen_nom_famille()
+            prenom = generateur.gen_prenom(estFeminin)
+            tel_fixe = generateur.gen_tel_fixe(10)
+            mobile = generateur.gen_tel_mobile(10)
+            ville = generateur.gen_commune()
+            rue = generateur.gen_adresse_rue()
+
+            ligne = titre+";"+nom+";"+prenom+";"+str.lower(prenom)+"."+str.lower(nom)+"@gmail.com"+";"
+            ligne = ligne+tel_fixe+";"+mobile+";"+ville["codePostal"]+";"+ville["nom"]+ ";"+rue+";0\n"
+            fichier.write(ligne)
+                        </code></pre>
+                        <section>
+                            <p>
+                              Dans ce premier script,
+                            </p>
+                        </section>
+                    </div>
+
+                    <div class="box">
+                    <h2>Générateur de clients -- sociétés</h2>
+                    <pre><code class="language-python">
+from GenerateurDonneesPerso import GenerateurDonneesPerso
+
+def clients_societes(chemin):
+    with open(chemin, "w") as reset:
+        reset.write('')
+
+    with open(chemin, "a") as fichier:
+        fichier.write("Nom;Type de société;Rue;Ville;Code postal;Téléphone;Mobile;Email;Secteur d'activité;N° TVA;SIRET;Est une société \n")
+
+        generateur = GenerateurDonneesPerso()
+
+        nb_clients = int(input('Combien voulez-vous de clients sociétés ? Nb = '))
+
+
+        for i in range(0, nb_clients):
+            nom = generateur.gen_nom_societe()
+            rSociale = generateur.gen_raison_sociale()
+            rue = generateur.gen_adresse_rue()
+            ville = generateur.gen_commune()
+            tel_fixe = generateur.gen_tel_fixe(10)
+            mobile = generateur.gen_tel_mobile(10)
+            email = str.lower(nom+'@gmail.com')
+            activite = generateur.gen_activite_secteur()
+            siret = generateur.gen_siret()
+            tva = generateur.gen_numtva()
+            
+            email = email.replace(" ","-")
+
+
+            ligne = nom+";"+rSociale+";"+rue+";"+ville['nom']+";"+ville['codePostal']+";"+tel_fixe+";"+mobile+";"+email+";"+activite+";"+tva+";"+siret+";1\n"
+            fichier.write(ligne)
+                    </code></pre>
+                    <section>
+                    <p>Ensuite, </p>
+                    </section>
+                </div>
+                </div>
+            </div>
+
+            <div class="is-flex is-flex-direction-row is-gap-2 mt-5">
+            <div class="box mb-1">
+                <h2>Script final</h2>
+                <pre><code class="language-python">
+from GenerateurDonneesPerso import GenerateurDonneesPerso
+from random import randint
+
+from genere_clients_particuliers_odoo_csv import clients_particuliers
+from genere_clients_societes_odoo_csv import clients_societes
+
+choix = int(input('Voulez vous générer des clients particuliers(1) ou societes(2) ? type = '))
+chemin_fichier = input('Entrez le chemin d\'enregistrement du fichier csv : ')
+if chemin_fichier == '':
+    chemin_fichier = '.'
+
+if choix == 1:
+    chemin_fichier = chemin_fichier+'\\clients_particuliers_odoo.csv'
+    clients_particuliers(chemin_fichier)
+elif choix == 2:
+    chemin_fichier = chemin_fichier+'\\clients_societes_odoo.csv'
+    clients_societes(chemin_fichier)
+else:
+    print('Choix incorrect')
+                </code></pre>
+                <section>
+                    <p>Maintenant, </p>
+                </section>
+            </div>
+
+            <div class="box mb-1">
+            <h2>Éxécutable .bat</h2>
+                <pre><code class="language-python">
+@echo off
+
+python --version >nul 2>&1
+IF ERRORLEVEL 1 (
+    echo Python n est pas installe ou n est pas reconnu.
+    echo Veuillez installer Python avant de continuer.
+    pause
+    exit
+)
+
+cd /d "%~dp0"
+python genere_clients_odoo_csv.py
+echo Execution terminee.
+pause
+                </code></pre>
+                <section>
+                    <p>Et enfin, </p>
+                </section>
+            </div>
+        </div>
+            
+        </div>
+
 </main>
 
 

@@ -1,0 +1,57 @@
+/* Fond global */
+body {
+  background-color: #363636 !important; /* has-background-grey-darker de Bulma */
+  color: #f5f5f5 !important;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #242424 !important;
+}
+.navbar-item,
+.navbar-link,
+.navbar-item:hover,
+.navbar-link:hover {
+  color: #f5f5f5 !important;
+  background-color: transparent !important;
+}
+.navbar-item:focus,
+.navbar-item.is-active,
+.navbar-link:focus {
+  background-color: #1a1a1a !important;
+}
+.navbar-dropdown {
+  background-color: #242424 !important;
+  border-top: none !important;
+}
+.navbar-dropdown .navbar-item:hover {
+  background-color: #1a1a1a !important;
+}
+
+/* Boxes */
+.box {
+  background-color: #2d2d2d !important;
+  color: #f5f5f5 !important;
+}
+
+/* Titres */
+h1, h2, h3, h4, h5, h6 {
+  color: #f5f5f5 !important;
+}
+
+/* Footer */
+.footer {
+  background-color: #242424 !important;
+  color: #f5f5f5 !important;
+}
+.footer strong {
+  color: #f5f5f5 !important;
+}
+
+strong {
+  color: #f5f5f5 !important;
+}
+
+.title {
+  color: #f5f5f5 !important;
+}

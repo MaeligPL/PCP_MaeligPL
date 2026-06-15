@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portefeuille de Compétences Professionnelles</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+</head>
+<body class="has-background-grey-darker is-flex is-flex-direction-column" style="min-height: 100vh;">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="./index.html">
+        Présentation
+      </a>
+
+      <a class="navbar-item" href="./bts.html">
+        BTS SIO
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <p class="navbar-link">
+          Réalisations BTS
+        </p>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="./jeu_php.html">
+            Pierre Feuille Ciseaux - PHP
+          </a>
+          <a class="navbar-item" href="./generateur_donnees.html">
+            Générateur de données - Python POO
+          </a>
+          <a class="navbar-item" href="./serveur_web.html">
+            Etude Faisabilité serveur Web - PHP / MySQL, SQLite
+          </a>
+          <a class="navbar-item" href="./developpement_infra_web.html">
+            Développement d'infrastructure Web - HTML, CSS, PHP, MySQL
+          </a>
+        </div>
+      </div>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <p class="navbar-link">
+          Réalisations Perso
+        </p>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="">
+            [...]
+          </a>
+        </div>
+      </div>
+
+      <a class="navbar-item" href="./stage.html">
+        Stage
+        </a>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-danger" href="./CV-MaeligPL.pdf" download>
+            <strong>Télécharger mon CV</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="content is-flex-grow-1">
+    <header>
+        <h1 class="has-text-centered pt-6">Stage en entreprise</h1>
+        <p class="has-text-centered pb-5"><strong>Celsius — Développement d'un intranet · 6 semaines</strong></p>
+    </header>
+
+    <div class="is-flex is-justify-content-center pl-5 pr-5 is-gap-2 mb-6">
+        <div class="box mb-1">
+            <h2>Contexte</h2>
+            <p>Ce stage de six semaines s'est déroulé au sein du service informatique de <strong>Celsius</strong>, une entreprise de <strong>transport frigorifique</strong>. La mission principale consistait à concevoir et développer une <strong>application web intranet</strong> à destination des équipes internes, afin de centraliser la communication et les ressources de l'entreprise.</p>
+        </div>
+        <div class="box mb-1">
+            <h2>Technologies utilisées</h2>
+            <p>Le projet a été réalisé avec le framework web <strong>Python Django</strong>, en lien avec un <strong>annuaire interne LDAP</strong> pour l'authentification. <strong>Bootstrap</strong> permet d'avoir un site responsive pour les consultations sur mobiles. La gestion des versions a été assurée via <strong>Gitea</strong>, et le développement s'est effectué sous <strong>PyCharm</strong>.</p>
+        </div>
+    </div>
+
+    <!-- Bloc semaines -->
+    <div class="box ml-5 mr-5 has-background-grey-dark">
+
+        <!-- 1 & 2 -->
+        <div class="is-flex is-flex-direction-row is-gap-2">
+
+            <div class="box">
+                <h2>Semaine 1 — Intégration et montée en compétences</h2>
+                <pre class="box has-background-primary has-text-black">
+Formation Django (Udemy)
+Prise en main de PyCharm
+Réunion tuteur + DRH → premiers besoins
+                </pre>
+                <p>La première semaine a été consacrée à l'<strong>intégration dans l'environnement de travail</strong> : configuration du matériel, installation des logiciels, et visite des locaux. Une formation autonome sur <strong>Django</strong> (framework Python) a constitué le socle technique nécessaire à la mission. Une première réunion avec le tuteur et la DRH a permis d'identifier les <strong>grandes orientations fonctionnelles</strong> de l'intranet.</p>
+            </div>
+
+            <div class="box">
+                <h2>Semaine 2 — Analyse et conception</h2>
+                <pre class="box has-background-warning-light has-text-black">
+Présentation infrastructure réseau
+Accès Gitea + base de données
+Réunion DRH → besoins fonctionnels
+Maquettes + modélisation des données
+                </pre>
+                <p>Après une présentation de l'<strong>infrastructure réseau</strong> de l'entreprise, les accès aux environnements de travail ont été provisionnés. Une réunion avec la DRH a affiné les besoins. Une <strong>veille sur des intranets existants</strong> a orienté les choix ergonomiques, et les premiers travaux de <strong>conception</strong> ont débuté : modélisation des données et maquettes de l'interface.</p>
+            </div>
+
+        </div>
+
+        <!-- 3 & 4 -->
+        <div class="is-flex is-flex-direction-row is-gap-2 mt-2">
+
+            <div class="box">
+                <h2>Semaine 3 — Développement des fonctionnalités principales</h2>
+                <pre class="box has-background-success has-text-black">
+Authentification LDAP
+Fil d'actualité (CRUD + modération)
+Espace documents (consultation + téléchargement)
+Boîte à idées (vote, suggestions)
+Gestion des droits (admin / utilisateur)
+                </pre>
+                <p>La semaine a débuté par la rédaction du <strong>cahier des charges fonctionnel</strong>. Le développement a ensuite démarré avec la mise en place de l'<strong>authentification via l'annuaire interne</strong>, permettant aux collaborateurs de se connecter avec leurs identifiants habituels.</p>
+                <p>Plusieurs fonctionnalités ont été développées successivement : un <strong>fil d'actualité</strong> avec publication, modification, suppression et système de modération ; un espace <strong>Documents</strong> avec barre de recherche ; une <strong>Boîte à idées</strong> soumise au vote des utilisateurs. Un système de <strong>confirmation avant suppression</strong> a été généralisé à toute l'application.</p>
+            </div>
+
+            <div class="box">
+                <h2>Semaine 4 — Enrichissement et finalisation</h2>
+                <pre class="box has-background-info has-text-black">
+Réactions sur publications et idées
+Profil utilisateur + photo + biographie
+Annuaire des collaborateurs + export
+Commentaires sur articles
+Mode clair / sombre
+Indicateurs RH (espace admin)
+Intégration logo + favicon
+                </pre>
+                <p>Cette semaine a été dense en nouvelles fonctionnalités : <strong>réactions</strong> sur les publications et les idées, <strong>profils utilisateurs</strong> personnalisables (photo, biographie, date d'anniversaire), et un <strong>annuaire des collaborateurs</strong> avec barre de recherche et export. Un <strong>système de commentaires</strong> a été ajouté au fil d'actualité.</p>
+                <p>L'interface a également été enrichie avec un <strong>mode clair/sombre</strong>, l'intégration du <strong>logo de l'entreprise</strong> adapté selon le thème actif, une icône de favori, et des corrections d'affichage sur mobile. Un espace dédié aux <strong>indicateurs RH</strong> a été livré pour les administrateurs.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bilan -->
+    <div class="is-flex is-justify-content-center pl-5 pr-5 is-gap-2 mt-6 mb-6">
+        <div class="box mb-1">
+            <h2>Compétences développées</h2>
+            <p>Ce stage m'a permis de monter en compétences sur <strong>Django</strong> et le développement web back-end en Python, de travailler avec un <strong>annuaire LDAP</strong>, de gérer un projet avec <strong>Gitea</strong>, et de conduire des réunions de recueil de besoins avec des interlocuteurs métier (DRH).</p>
+        </div>
+        <div class="box mb-1">
+            <h2>Bilan</h2>
+            <p>En six semaines, j'ai conçu et livré une application intranet <strong>complète et fonctionnelle</strong>, couvrant des besoins variés : communication interne, gestion documentaire, annuaire, et outils RH. Ce projet m'a confrontée à des contraintes réelles d'entreprise et m'a permis de travailler en <strong>autonomie</strong> tout en collaborant régulièrement avec mon tuteur et les équipes.</p>
+        </div>
+    </div>
+
+</main>
+
+    <footer class="footer py-5">
+        <div class="content has-text-centered">
+            <p><strong>Maëlig POUPOT LABANVOIE - 2025/2026</strong></p>
+        </div>
+    </footer>
+
+</body>
+</html>
+</body>
+<footer class="footer py-5">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Maëlig POUPOT LABANVOIE - 2025/2026</strong>
+    </p>
+  </div>
+</footer>
+</html>
