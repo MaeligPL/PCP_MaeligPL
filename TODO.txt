@@ -1,5 +1,0 @@
-- ajouter les screens / extrait de code sur stage.html
-
-- nettoyer le code (HTML et CSS)
-
-- ajouter contenu dans generateur_donnees.html et developpement_infr_web.html
