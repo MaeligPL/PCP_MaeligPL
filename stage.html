@@ -7,180 +7,418 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
 </head>
+
+<!-- Modale image -->
+<div id="imageModal" class="modal">
+    <div class="modal-background" onclick="closeModal()"></div>
+    <div class="modal-content">
+        <img id="modalImage" src="" alt="Image agrandie">
+    </div>
+    <button class="modal-close is-large" aria-label="close" onclick="closeModal()"></button>
+</div>
+
+
+<!-- Modale markdown -->
+<div id="markdownModal" class="modal markdown-body">
+    <div class="modal-background" onclick="closeMarkdownModal()"></div>
+    <div class="modal-content">
+        <div id="markdownContent"></div>
+    </div>
+    <button class="modal-close is-large" aria-label="close" onclick="closeMarkdownModal()"></button>
+</div>
+
 <body class="has-background-grey-darker is-flex is-flex-direction-column" style="min-height: 100vh;">
+
     <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        </a>
-    </div>
-
-    <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item" href="./index.html">
-        Présentation
-      </a>
-
-      <a class="navbar-item" href="./bts.html">
-        BTS SIO
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <p class="navbar-link">
-          Réalisations BTS
-        </p>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="./jeu_php.html">
-            Pierre Feuille Ciseaux - PHP
-          </a>
-          <a class="navbar-item" href="./generateur_donnees.html">
-            Générateur de données - Python POO
-          </a>
-          <a class="navbar-item" href="./serveur_web.html">
-            Etude Faisabilité serveur Web - PHP / MySQL, SQLite
-          </a>
-          <a class="navbar-item" href="./developpement_infra_web.html">
-            Développement d'infrastructure Web - HTML, CSS, PHP, MySQL
-          </a>
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
         </div>
-      </div>
 
-      <div class="navbar-item has-dropdown is-hoverable">
-        <p class="navbar-link">
-          Réalisations Perso
-        </p>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="">
-            [...]
-          </a>
-        </div>
-      </div>
-
-      <a class="navbar-item" href="./stage.html">
-        Stage
-        </a>
-    </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-danger" href="./CV-MaeligPL.pdf" download>
-            <strong>Télécharger mon CV</strong>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
-
-<main class="content is-flex-grow-1">
-    <header>
-        <h1 class="has-text-centered pt-6">Stage en entreprise</h1>
-        <p class="has-text-centered pb-5"><strong>Celsius - Développement d'un intranet · 6 semaines</strong></p>
-    </header>
-
-    <div class="is-flex is-justify-content-center pl-5 pr-5 is-gap-2 mb-6">
-        <div class="box mb-1">
-            <h2>Contexte</h2>
-            <p>Ce stage de six semaines s'est déroulé au sein du service informatique de <strong>Celsius</strong>, une entreprise de <strong>transport frigorifique</strong>. La mission principale consistait à concevoir et développer une <strong>application web intranet</strong> à destination des équipes internes, afin de centraliser la communication et les ressources de l'entreprise.</p>
-        </div>
-        <div class="box mb-1">
-            <h2>Technologies utilisées</h2>
-            <p>Le projet a été réalisé avec le framework web <strong>Python Django</strong>, en lien avec un <strong>annuaire interne LDAP</strong> pour l'authentification. <strong>Bootstrap</strong> permet d'avoir un site responsive pour les consultations sur mobiles. La gestion des versions a été assurée via <strong>Gitea</strong>, et le développement s'est effectué sous <strong>PyCharm</strong>.</p>
-        </div>
-    </div>
-
-    <!-- Bloc semaines -->
-    <div class="box ml-5 mr-5 has-background-grey-dark">
-
-        <!-- 1 & 2 -->
-        <div class="is-flex is-flex-direction-row is-gap-2">
-
-            <div class="box">
-                <h2>Semaine 1 - Intégration et montée en compétences</h2>
-                <pre class="box has-background-primary has-text-black">
-Formation Django (Udemy)
-Prise en main de PyCharm
-Réunion tuteur + DRH → premiers besoins
-                </pre>
-                <p>La première semaine a été consacrée à l'<strong>intégration dans l'environnement de travail</strong> : configuration du matériel, installation des logiciels, et visite des locaux. Une formation autonome sur <strong>Django</strong> (framework Python) a constitué le socle technique nécessaire à la mission. Une première réunion avec le tuteur et la DRH a permis d'identifier les <strong>grandes orientations fonctionnelles</strong> de l'intranet.</p>
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="./index.html">
+                    Présentation
+                </a>
+                <a class="navbar-item" href="./bts.html">
+                    BTS SIO
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <p class="navbar-link">
+                        Réalisations BTS
+                    </p>
+                    <div class="navbar-dropdown">
+                      <a class="navbar-item" href="./generateur_donnees.html">
+                        Générateur de données - Python POO
+                      </a>
+                      <a class="navbar-item" href="./developpement_infra_web.html">
+                        Développement d'infrastructure Web - HTML, CSS, PHP, MySQL
+                      </a>
+                  </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <p class="navbar-link">
+                        Réalisations Perso
+                    </p>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="">
+                            [...]
+                        </a>
+                    </div>
+                </div>
+                <a class="navbar-item" href="./stage.html">
+                    Stage
+                </a>
             </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-danger" href="./CV-MaeligPL.pdf" download>
+                            <strong>Télécharger mon CV</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-            <div class="box">
-                <h2>Semaine 2 - Analyse et conception</h2>
-                <pre class="box has-background-warning-light has-text-black">
+    <main class="content is-flex-grow-1">
+        <header>
+            <h1 class="has-text-centered pt-6">Stage en entreprise</h1>
+            <p class="has-text-centered pb-5"><strong>Celsius - Développement d'un intranet - 6 semaines</strong></p>
+        </header>
+
+        <!-- Partie 1 : Présentation de l'entreprise et formation -->
+        <div class="box ml-5 mr-5 has-background-grey-dark mb-6">
+            <h2 class="has-text-centered">1. Présentation de l'entreprise et formation</h2>
+            <div class="is-flex is-flex-direction-row is-gap-2 mt-4">
+                <div class="box mb-1">
+                    <h3>Contexte</h3>
+                    <p>Ce stage de six semaines s'est déroulé au sein du service informatique de <strong>Celsius</strong>, une entreprise spécialisée dans le <strong>transport frigorifique</strong>. La mission principale consistait à concevoir et développer une <strong>application web intranet</strong> pour centraliser la communication et les ressources internes.</p>
+                    <figure class="image-container">
+                        <img src="./images/celsius_logo.png" alt="Logo de Celsius" class="stage-image">
+                        <figcaption>Logo de l'entreprise Celsius</figcaption>
+                    </figure>
+                </div>
+                <div>
+                    <div class="box mb-1">
+                        <h3>Outils utilisés</h3>
+                        <p>Pendant ce stage, plusieurs <strong>outils</strong> ont été mis à ma disposition :</p>
+                        <ul>
+                            <li>Un laptop en <strong>dual-boot</strong> Ubuntu / Windows 11</li>
+                            <li>Une licence pour l'IDE <strong>PyCharm</strong></li>
+                            <li>Un compte sur <strong>Udemy</strong> pour la formation Django</li>
+                            <li>Un compte <strong>Microsoft</strong> avec Office</li>
+                            <li>Un accès aux serveurs de l'entreprise <strong>(Gitea, BDD)</strong></li>
+                            <li>Une licence <strong>Codex (IA)</strong> pour <strong>assister le développement</strong> dans PyCharm</li>
+                        </ul>
+                    </div>
+                    <div class="box mb-1 mt-4">
+                        <h3>Prise en main et formation</h3>
+                        <p>La première semaine a été dédiée à l'<strong>intégration</strong> : configuration du matériel, installation des logiciels, et visite des locaux. Une formation autonome sur <strong>Django</strong> (via Udemy) a permis d'acquérir les bases nécessaires pour le développement de l'intranet. Une réunion avec le tuteur et la DRH a permis d'identifier les <strong>besoins fonctionnels initiaux</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Partie 2 : Spécifications techniques et cahier des charges -->
+        <div class="box ml-5 mr-5 has-background-grey-dark mb-6">
+            <h2 class="has-text-centered">2. Spécifications techniques et cahier des charges</h2>
+            <div class="is-flex is-flex-direction-row is-gap-2 mt-4">
+                <div id="maxWidthDiv" class="box mb-1">
+                    <h3>Analyse et conception</h3>
+                    <pre class="box has-background-warning-light has-text-black">
 Présentation infrastructure réseau
 Accès Gitea + base de données
 Réunion DRH → besoins fonctionnels
 Maquettes + modélisation des données
-                </pre>
-                <p>Après une présentation de l'<strong>infrastructure réseau</strong> de l'entreprise, les accès aux environnements de travail ont été provisionnés. Une réunion avec la DRH a affiné les besoins. Une <strong>veille sur des intranets existants</strong> a orienté les choix ergonomiques, et les premiers travaux de <strong>conception</strong> ont débuté : modélisation des données et maquettes de l'interface.</p>
-            </div>
+                    </pre>
+                    <p>Après une présentation de l'<strong>infrastructure réseau</strong> de l'entreprise, les accès aux environnements de travail (Gitea, base de données) ont été configurés. Une réunion avec la DRH a permis d'affiner les besoins. Une <strong>veille sur des intranets existants</strong> a orienté les choix ergonomiques, et les premiers travaux de <strong>conception</strong> ont débuté avec la modélisation des données dans la base. Il sagissait ici d'une première version qui répondait aux quelques demande qui avaient été faite. Pendant le développement, avec l'ajout des fontionnalités, la base de données a évoluée et le schéma ci-dessous n'est plus vraiment représentatif.</p>
+                    <!-- Bouton pour afficher/masquer le schéma -->
+                    <div class="has-text-centered mt-4">
+                        <button id="toggleSchemaBtn" class="button is-small is-info stage-link-content">
+                            📄 Voir le schéma de la base de données
+                        </button>
+                        <figcaption>Schéma Base de Données - V0 (Changements plus tard)</figcaption>
+                    </div>
 
-        </div>
+                    <!-- Conteneur pour le diagramme Mermaid (caché par défaut) -->
+                    <div id="mermaidContainer" class="mermaid-container" style="display: none; margin-top: 1rem;">
+                        <div class="mermaid">
+                            %% Diagramme Mermaid.js
+                            erDiagram
+                            %%% Entités %%%
 
-        <!-- 3 & 4 -->
-        <div class="is-flex is-flex-direction-row is-gap-2 mt-2">
+                            Societe {
+                                int id PK
+                                string nom
+                                string secteur
+                            }
 
-            <div class="box">
-                <h2>Semaine 3 - Développement des fonctionnalités principales</h2>
-                <pre class="box has-background-success has-text-black">
+                            Site {
+                                int id PK
+                                string nom
+                                string ville
+                                string adresse
+                                int entite_id FK
+                            }
+
+                            Employe {
+                                int id PK
+                                string nom
+                                string prenom
+                                string email
+                                string poste
+                                date date_embauche
+                                int site_id FK
+                                int entite_id FK
+                                int role_id FK
+                            }
+
+                            Role {
+                                int id PK
+                                string libelle
+                            }
+
+                            Permission {
+                                int id PK
+                                string type_contenu
+                                string action
+                                int role_id FK
+                            }
+
+                            Publication {
+                                int id PK
+                                string titre
+                                text contenu
+                                string type
+                                boolean est_commun
+                                datetime publie_le
+                                int auteur_id FK
+                                int site_id FK
+                            }
+
+                            Document {
+                                int id PK
+                                string titre
+                                string fichier
+                                string type
+                                datetime mise_a_jour
+                                boolean est_commun
+                                int entite_id FK
+                                int categorie_id FK
+                            }
+
+                            Categorie_document {
+                                int id PK
+                                string libelle
+                                string section
+                            }
+
+                            Idee {
+                                int id PK
+                                string titre
+                                text description
+                                datetime soumise_le
+                                int entite_id FK
+                                int employe_id FK
+                            }
+
+                            %%% Relations %%%
+
+                            Societe ||--o{ Site : "Possède"
+                            Site ||--o{ Employe : "Possède"
+                            Employe }|--|| Role : "Désigne"
+                            Role ||--o{ Permission : "Peut"
+                            Employe ||--o{ Publication : "Publie"
+                            Employe ||--o{ Idee : "Propose"
+                            Site ||--o{ Publication : "Contient"
+                            Site ||--o{ Document : "Contient"
+                            Employe ||--o{ Idee : "Propose"
+                            Categorie_document ||--o{ Document : "Désigne"
+                        </div>
+                    </div>
+                </div>
+                <div class="box mb-1">
+                    <h3>Cahier des charges et fonctionnalités principales</h3>
+                    <pre class="box has-background-success has-text-black">
 Authentification LDAP
 Fil d'actualité (CRUD + modération)
 Espace documents (consultation + téléchargement)
 Boîte à idées (vote, suggestions)
 Gestion des droits (admin / utilisateur)
-                </pre>
-                <p>La semaine a débuté par la rédaction du <strong>cahier des charges fonctionnel</strong>. Le développement a ensuite démarré avec la mise en place de l'<strong>authentification via l'annuaire interne</strong>, permettant aux collaborateurs de se connecter avec leurs identifiants habituels.</p>
-                <p>Plusieurs fonctionnalités ont été développées successivement : un <strong>fil d'actualité</strong> avec publication, modification, suppression et système de modération ; un espace <strong>Documents</strong> avec barre de recherche ; une <strong>Boîte à idées</strong> soumise au vote des utilisateurs. Un système de <strong>confirmation avant suppression</strong> a été généralisé à toute l'application.</p>
-            </div>
-
-            <div class="box">
-                <h2>Semaine 4 - Enrichissement et finalisation</h2>
-                <pre class="box has-background-info has-text-black">
 Réactions sur publications et idées
 Profil utilisateur + photo + biographie
 Annuaire des collaborateurs + export
 Commentaires sur articles
 Mode clair / sombre
 Indicateurs RH (espace admin)
-Intégration logo + favicon
-                </pre>
-                <p>Cette semaine a été dense en nouvelles fonctionnalités : <strong>réactions</strong> sur les publications et les idées, <strong>profils utilisateurs</strong> personnalisables (photo, biographie, date d'anniversaire), et un <strong>annuaire des collaborateurs</strong> avec barre de recherche et export. Un <strong>système de commentaires</strong> a été ajouté au fil d'actualité.</p>
-                <p>L'interface a également été enrichie avec un <strong>mode clair/sombre</strong>, l'intégration du <strong>logo de l'entreprise</strong> adapté selon le thème actif, une icône de favori, et des corrections d'affichage sur mobile. Un espace dédié aux <strong>indicateurs RH</strong> a été livré pour les administrateurs.</p>
+                    </pre>
+                    <p>Le <strong>cahier des charges fonctionnel</strong> a été rédigé pour formaliser les attentes. Les fonctionnalités clés ont été définies : <strong>authentification LDAP</strong>, fil d'actualité avec modération, espace documents, boîte à idées, gestion des droits, profils utilisateurs, annuaire, et indicateurs RH. Un <strong>mode clair/sombre</strong> a été implémenté pour améliorer l'expérience utilisateur.</p>
+                    <figure class="image-container">
+                        <a href="./docs/Cahier des charges fonctionnel.pdf" target="_blank" class="stage-link">
+                            <div class="stage-link-content">
+                                <p>📄 Cahier des charges (PDF)</p>
+                            </div>
+                        </a>
+                    </figure>
+                    <figcaption>Cahier des charges au format PDF</figcaption>
+                </div>
             </div>
-
         </div>
 
-    </div>
-
-    <!-- Bilan -->
-    <div class="is-flex is-justify-content-center pl-5 pr-5 is-gap-2 mt-6 mb-6">
-        <div class="box mb-1">
-            <h2>Compétences développées</h2>
-            <p>Ce stage m'a permis de monter en compétences sur <strong>Django</strong> et le développement web back-end en Python, de travailler avec un <strong>annuaire LDAP</strong>, de gérer un projet avec <strong>Gitea</strong>, et de conduire des réunions de recueil de besoins avec des interlocuteurs métier (DRH).</p>
+        <!-- Partie 3 : Développement, tests et déploiement -->
+        <div class="box ml-5 mr-5 has-background-grey-dark mb-6">
+            <h2 class="has-text-centered">3. Développement, tests et déploiement</h2>
+            <div class="is-flex is-flex-direction-column is-gap-2 mt-4">
+                <!-- Semaines 3 et 4 -->
+                <div class="is-flex is-flex-direction-row is-gap-2">
+                    <div class="box mb-1">
+                        <h3>Semaines 3 et 4 : Développement des fonctionnalités</h3>
+                        <p>Le développement a débuté avec la mise en place de l'<strong>authentification LDAP</strong>, permettant aux collaborateurs de se connecter avec leurs identifiants habituels. Plusieurs fonctionnalités ont été implémentées : <strong>fil d'actualité</strong> (CRUD + modération), <strong>espace documents</strong> avec barre de recherche, <strong>boîte à idées</strong> soumise au vote, et un système de <strong>confirmation avant suppression</strong>.</p>
+                        <p>L'interface a été enrichie avec des <strong>réactions</strong> sur les publications, des <strong>profils utilisateurs</strong> personnalisables (photo, biographie), un <strong>annuaire des collaborateurs</strong> avec export, et des <strong>commentaires</strong> sur les articles.</p>
+                    </div>
+                    <div class="box mb-1">
+                        <h3>Améliorations et tests</h3>
+                        <p>Des ajustements visuels ont été apportés pour harmoniser l'interface, et les indicateurs RH ont été adaptés pour être spécifiques à chaque société. Le processus de synchronisation des utilisateurs a été optimisé pour utiliser les adresses email comme référence unique. L'expérience utilisateur sur mobile a été améliorée avec des ajustements de style.</p>
+                        <figure class="image-container">
+                            <div class="is-flex is-flex-wrap-wrap is-justify-content-center">
+                                <img id="petitImage" src="./images/homepage_intranet.png" alt="Capture d'écran de l'intranet" class="stage-image">
+                                <img id="petitImage" src="./images/addDocs_intranet.png" alt="Capture d'écran de l'intranet" class="stage-image">
+                            </div>
+                            <div class="is-flex is-flex-wrap-wrap is-justify-content-center">
+                                <img id="petitImage" src="./images/DocsList_intranet.png" alt="Capture d'écran de l'intranet" class="stage-image">
+                                <img id="petitImage" src="./images/annuaire_intranet.png" alt="Capture d'écran de l'intranet" class="stage-image">
+                            </div>
+                            <figcaption>Captures d'écran de l'intranet en développement</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <!-- Semaines 5 et 6 -->
+                <div class="is-flex is-flex-direction-row is-gap-2">
+                    <div class="box mb-1">
+                        <h3>Semaine 5 : Finalisation des fonctionnalités</h3>
+                        <p>L'<strong>annuaire des collaborateurs</strong> a été enrichi pour permettre aux administrateurs d'importer les profils des utilisateurs en amont. Les documents et formulaires ont été classés par thème, avec la possibilité d'en créer de nouveaux. L'export de la liste des utilisateurs a été restreint aux administrateurs pour garantir la confidentialité.</p>
+                        <p>Les vignettes des profils utilisateurs affichent désormais directement l'email, le numéro de téléphone mobile et fixe. Des <strong>filtres par société</strong> ont été ajoutés pour limiter l'accès aux documents. Un champ optionnel a été intégré pour permettre une description détaillée des indicateurs RH.</p>
+                    </div>
+                    <div class="box mb-1">
+                        <h3>Semaine 6 : Déploiement et ajustements</h3>
+                        <p>La première version de l'intranet a été mise en ligne, et la <strong>documentation technique</strong> a été rédigée pour le déploiement et les mises à jour futures. Une réunion avec l'équipe a permis de définir une <strong>charte graphique commune</strong>, appliquée à l'intranet : thème clair retravaillé, boutons restylisés, bannière personnalisée, et icônes ajoutées.</p>
+                        <p>Un bouton flottant circulaire a remplacé le bouton "Retour" classique pour une navigation plus intuitive. Le filtrage par société a été retravaillé pour permettre l'association d'un document ou formulaire à plusieurs sociétés. Enfin, la <strong>documentation utilisateur</strong> a été rédigée, et le site a été mis à jour en ligne avec l'importation complète des utilisateurs.</p>
+                        <p>Une fois la V1 de l'intranet finalisée, un document sous format Markdown a été réalisé avec Codex pour lister les spécifications techniques de l'application.</p>
+                        <figure class="image-container">
+                            <a href="#" onclick="event.preventDefault(); openMarkdownModal('./docs/SPECIFICATIONS.md')" class="stage-link">
+                                <div class="stage-link-content">
+                                    <p>📄 Spécifications technique (Markdown)</p>
+                                </div>
+                            </a>
+                        </figure>
+                        <figcaption>Spécifications technique au format Markdown</figcaption>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="box mb-1">
-            <h2>Bilan</h2>
-            <p>En six semaines, j'ai conçu et livré une application intranet <strong>complète et fonctionnelle</strong>, couvrant des besoins variés : communication interne, gestion documentaire, annuaire, et outils RH. Ce projet m'a confrontée à des contraintes réelles d'entreprise et m'a permis de travailler en <strong>autonomie</strong> tout en collaborant régulièrement avec mon tuteur et les équipes.</p>
+
+        <!-- Bilan -->
+        <div class="is-flex is-justify-content-center pl-5 pr-5 is-gap-2 mt-6 mb-6">
+            <div class="box mb-1">
+                <h2>Compétences développées</h2>
+                <p>Ce stage m'a permis de monter en compétences sur <strong>Django</strong> et le développement web back-end en Python, de travailler avec un <strong>annuaire LDAP</strong>, de gérer un projet avec <strong>Gitea</strong>, et de conduire des réunions de recueil de besoins avec des interlocuteurs métier (DRH).</p>
+            </div>
+            <div class="box mb-1">
+                <h2>Bilan</h2>
+                <p>En six semaines, j'ai conçu et livré une application intranet <strong>complète et fonctionnelle</strong>, couvrant des besoins variés : communication interne, gestion documentaire, annuaire, et outils RH. Ce projet m'a confronté à des contraintes réelles d'entreprise et m'a permis de travailler en <strong>autonomie</strong> tout en collaborant régulièrement avec mon tuteur et les équipes.</p>
+            </div>
         </div>
-    </div>
+    </main>
 
-</main>
+    <footer class="footer py-5">
+        <div class="content has-text-centered">
+            <p><strong>Maëlig POUPOT LABANVOIE - 2025/2026</strong></p>
+        </div>
+    </footer>
 
+
+    <!-- Scripts pour les modales -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
+
+    <script>
+        //fermer la modale Markdown
+        function closeMarkdownModal() {
+            const modal = document.getElementById("markdownModal");
+            modal.classList.remove("is-active");
+        }
+
+        //ouvrir la modale Markdown
+        async function openMarkdownModal(mdFilePath) {
+            const modal = document.getElementById("markdownModal");
+            const contentDiv = document.getElementById("markdownContent");
+
+            try {
+                console.log("Tentative de chargement de :", mdFilePath); // Debug
+                const response = await fetch(mdFilePath);
+                if (!response.ok) {
+                    throw new Error(`Fichier introuvable : ${mdFilePath} (${response.status})`);
+                }
+                const markdownText = await response.text();
+                contentDiv.innerHTML = marked.parse(markdownText);
+
+                // Ouvrir la modale
+                modal.classList.add("is-active");
+            } catch (error) {
+                console.error("Erreur :", error);
+                contentDiv.innerHTML = `<p style="color: white;">Erreur : ${error.message}</p>`;
+            }
+        }
+
+        //ouvrir la modale d'images
+        function openModal(imageSrc) {
+            const modal = document.getElementById("imageModal");
+            const modalImage = document.getElementById("modalImage");
+            modalImage.src = imageSrc;
+            modal.classList.add("is-active");
+        }
+
+        //fermer la modale d'images
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            modal.classList.remove("is-active");
+        }
+
+        // listener pour les images
+        document.addEventListener("DOMContentLoaded", function() {
+            const images = document.querySelectorAll(".stage-image");
+            images.forEach(image => {
+                image.addEventListener("click", function() {
+                    openModal(this.src);
+                });
+            });
+        });
+
+        // Initialiser Mermaid
+        mermaid.initialize({
+            startOnLoad: false, // On ne génère pas automatiquement les diagrammes
+            theme: 'dark', // Thème sombre pour correspondre à ton design
+        });
+
+        document.getElementById('toggleSchemaBtn').addEventListener('click', function() {
+            const container = document.getElementById('mermaidContainer');
+            if (container.style.display === 'none') {
+                container.style.display = 'block';
+                this.textContent = '📄 Masquer le schéma';
+                // Générer le diagramme Mermaid
+                mermaid.init(undefined, container.querySelector('.mermaid'));
+            } else {
+                container.style.display = 'none';
+                this.textContent = '📄 Voir le schéma de la base de données';
+            }
+        });
+    </script>
 </body>
-</html>
-</body>
-<footer class="footer py-5">
-  <div class="content has-text-centered">
-    <p>
-      <strong>Maëlig POUPOT LABANVOIE - 2025/2026</strong>
-    </p>
-  </div>
-</footer>
 </html>

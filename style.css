@@ -55,3 +55,177 @@ strong {
 .title {
   color: #f5f5f5 !important;
 }
+
+
+
+
+/* Style pour les images dans les blocs */
+.image-container {
+    margin: 1rem auto;
+    text-align: center;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap; /* Permet aux images de passer à la ligne si nécessaire */
+    gap: 1rem; /* Espace entre les images */
+    justify-content: center; /* Centre les images horizontalement */
+}
+
+.image-container > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.stage-image {
+    height: auto !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#petitImage {
+    max-width: 200px !important; /* Réduit la taille des images */
+    height: auto !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.stage-image:hover {
+    transform: scale(1.02);
+}
+
+/* Style pour la modale d'images */
+#imageModal .modal-content {
+    max-width: 80% !important; /* 80% de la largeur de l'écran */
+    max-height: 80% !important; /* 80% de la hauteur de l'écran */
+    margin: auto !important;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modalImage {
+    max-width: 100% !important; /* L'image prend toute la largeur du conteneur */
+    max-height: 80vh !important; /* 80% de la hauteur de la fenêtre */
+    height: auto !important; /* Conserve les proportions */
+    display: block;
+    margin: 0 auto;
+}
+
+/* Style pour les blocs */
+figcaption {
+    margin-top: 0.5rem;
+    font-style: italic;
+    color: #888;
+    text-align: center;
+}
+
+/* Style pour les liens vers les documents */
+.stage-link {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.stage-link-content {
+    color: black;
+    background-color: #77cafa;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+
+.stage-link-content:hover {
+    background-color: #fac561;
+}
+
+
+
+/*  MODALE (COMPATIBILITÉ BULMA) */
+
+/* Fond noir pour la modale */
+.modal-background {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Contenu de la modale */
+.modal-content {
+    background-color: #1a1a1a !important;
+    color: white !important;
+    max-width: 90% !important;
+    max-height: 90% !important;
+    margin: auto !important;
+}
+
+/* Bouton de fermeture */
+.modal-close {
+    position: absolute !important;
+    top: 20px !important;
+    right: 20px !important;
+    color: white !important;
+    background: none !important;
+    border: none !important;
+    font-size: 2rem !important;
+    cursor: pointer !important;
+}
+
+/* Padding pour la modale Markdown */
+#markdownContent {
+    padding: 1.5rem !important;
+}
+
+#markdownContent p,
+#markdownContent h1,
+#markdownContent h2,
+#markdownContent h3,
+#markdownContent h4,
+#markdownContent h5,
+#markdownContent h6,
+#markdownContent ul,
+#markdownContent ol {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+}
+
+/* Affichage des puces pour les listes dans la modale Markdown */
+#markdownContent ul {
+    list-style-type: disc !important; /* Puces pour les listes non ordonnées */
+    padding-left: 2rem !important; /* Espace pour les puces */
+    margin-left: 1rem !important;
+}
+
+#markdownContent ol {
+    list-style-type: decimal !important; /* Numéros pour les listes ordonnées */
+    padding-left: 2rem !important; /* Espace pour les numéros */
+    margin-left: 1rem !important;
+}
+
+/* Style pour le conteneur Mermaid */
+.mermaid-container {
+    background-color: #2d2d2d;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 100%;
+    overflow-x: auto;
+    text-align: center;
+}
+
+/* Style pour le diagramme Mermaid */
+.mermaid {
+    display: block; /* Important pour Mermaid.js */
+    margin: 0 auto;
+    max-width: 100%;
+    color: white !important;
+    font-size: 14px;
+}
+
+#maxWidthDiv {
+  max-width: 55%;
+}
